@@ -1,0 +1,72 @@
+module main (input clk, output reg CS, spi_clk, sdi 
+				);
+				
+
+reg [24:0] cnt;
+initial cnt <= 1'b0;
+reg [7:0] data_out;
+initial data_out <= 1'b0;
+ 
+
+reg [24:0] cnt_spi_clk; 
+initial cnt_spi_clk <= 1'b0;
+
+reg [7:0] bit_cnt;
+initial bit_cnt <= 1'b0;
+
+
+initial CS <= 1'b1;
+initial spi_clk <= 1'b0;
+initial sdi <= 1'b0;
+
+
+always @(posedge clk) begin
+
+	cnt <= cnt + 1'b1;
+	
+	if (cnt == 24'd100) begin
+		cnt <= 1'b0;
+		CS <= ~CS;
+		data_out <= data_out + 1'b1;
+	end
+	
+	if (data_out == 8'd255) begin
+		data_out <= 1'b0;
+	end
+
+end
+
+
+always @(posedge clk) begin
+	
+	if (CS == 1'b0) begin
+		
+		cnt_spi_clk <= cnt_spi_clk + 1'b1;
+		
+		if (cnt_spi_clk == 24'd6) begin
+			cnt_spi_clk <= 1'b0;
+			spi_clk <= ~spi_clk;
+		end
+		
+		
+		
+	end
+
+	
+end
+
+always @(posedge spi_clk) begin 
+
+	sdi <= data_out[bit_cnt];
+	bit_cnt <= bit_cnt + 1'b1;
+	
+	if (bit_cnt == 7'd7) begin
+		bit_cnt <= 1'b0;
+	end  
+
+end
+
+				
+				
+
+endmodule

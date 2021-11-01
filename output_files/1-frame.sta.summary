@@ -1,0 +1,113 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLK'
+Slack : -5.466
+TNS   : -262.070
+
+Type  : Slow 1200mV 85C Model Setup 'UART_Rx:u1|Readiness_byte'
+Slack : -1.236
+TNS   : -4.933
+
+Type  : Slow 1200mV 85C Model Setup 'UART_Rx:u1|UART_clk'
+Slack : 0.049
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLK'
+Slack : 0.340
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'UART_Rx:u1|UART_clk'
+Slack : 0.493
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'UART_Rx:u1|Readiness_byte'
+Slack : 0.895
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLK'
+Slack : -3.000
+TNS   : -123.447
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'UART_Rx:u1|UART_clk'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'UART_Rx:u1|Readiness_byte'
+Slack : -1.487
+TNS   : -5.948
+
+Type  : Slow 1200mV 0C Model Setup 'CLK'
+Slack : -5.219
+TNS   : -239.673
+
+Type  : Slow 1200mV 0C Model Setup 'UART_Rx:u1|Readiness_byte'
+Slack : -1.097
+TNS   : -4.382
+
+Type  : Slow 1200mV 0C Model Setup 'UART_Rx:u1|UART_clk'
+Slack : 0.128
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLK'
+Slack : 0.304
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'UART_Rx:u1|UART_clk'
+Slack : 0.464
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'UART_Rx:u1|Readiness_byte'
+Slack : 0.811
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLK'
+Slack : -3.000
+TNS   : -123.447
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'UART_Rx:u1|UART_clk'
+Slack : -1.487
+TNS   : -11.896
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'UART_Rx:u1|Readiness_byte'
+Slack : -1.487
+TNS   : -5.948
+
+Type  : Fast 1200mV 0C Model Setup 'CLK'
+Slack : -1.589
+TNS   : -52.701
+
+Type  : Fast 1200mV 0C Model Setup 'UART_Rx:u1|Readiness_byte'
+Slack : 0.121
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'UART_Rx:u1|UART_clk'
+Slack : 0.578
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLK'
+Slack : 0.143
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'UART_Rx:u1|UART_clk'
+Slack : 0.166
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'UART_Rx:u1|Readiness_byte'
+Slack : 0.242
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK'
+Slack : -3.000
+TNS   : -86.430
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'UART_Rx:u1|UART_clk'
+Slack : -1.000
+TNS   : -8.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'UART_Rx:u1|Readiness_byte'
+Slack : -1.000
+TNS   : -4.000
+
+------------------------------------------------------------

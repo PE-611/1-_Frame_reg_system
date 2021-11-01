@@ -1,0 +1,35 @@
+///////////////////////////////////////////////////////////
+// Name File : my_RAM.v 											//
+// Autor : Dyomkin Pavel Mikhailovich 							//
+// Company : GSC RF TRINITI										//
+// Description : RAM												  	//
+// Start design : 14.10.2020 										//
+// Last revision : 				 									//
+///////////////////////////////////////////////////////////
+
+module my_RAM (input rw, cs, clr,
+					input [7:0] data_in,
+					input [7:0] addr,
+					output reg [7:0] data_out
+					);
+
+
+reg [7:0] data[15:0];
+
+
+always @(negedge cs) begin
+
+	
+	if (rw == 1'b0) 					//READ
+			
+		data_out = data[addr];
+		
+	else if (rw == 1'b1) 			//WRITE
+		
+		data[addr] = data_in;
+
+	else
+		
+		data_out = 8'bz;
+end
+endmodule
