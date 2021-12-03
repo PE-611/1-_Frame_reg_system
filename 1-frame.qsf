@@ -73,13 +73,14 @@ set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH testbench -sect
 set_global_assignment -name EDA_TEST_BENCH_NAME testbench -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id testbench
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME main_vlg_tst -section_id testbench
-set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/main.vt -section_id testbench
 set_location_assignment PIN_118 -to OUT_SPI_CLK -comment "IO19 ORANGE"
 set_location_assignment PIN_119 -to SDI -comment "IO18 GREEN"
 set_location_assignment PIN_26 -to CLK
 set_location_assignment PIN_99 -to CS_SPI_RES -comment "IO8 YELLOW"
 set_location_assignment PIN_141 -to UART_RX_IN
-set_location_assignment PIN_79 -to led[0]
+set_location_assignment PIN_140 -to UART_TX_OUT
+set_global_assignment -name VERILOG_FILE UART_Tx.v
+set_global_assignment -name EDA_TEST_BENCH_FILE simulation/modelsim/main.vt -section_id testbench
 set_location_assignment PIN_80 -to led[1]
 set_location_assignment PIN_81 -to led[2]
 set_location_assignment PIN_84 -to led[3]
@@ -87,7 +88,8 @@ set_location_assignment PIN_85 -to led[4]
 set_location_assignment PIN_86 -to led[5]
 set_location_assignment PIN_87 -to led[6]
 set_location_assignment PIN_88 -to led[7]
-set_location_assignment PIN_140 -to UART_TX_OUT
-set_location_assignment PIN_89 -to UACLK
-set_location_assignment PIN_90 -to flg
+set_location_assignment PIN_98 -to launch_5kV
+set_location_assignment PIN_100 -to launch_ex
+set_location_assignment PIN_102 -to EX_OUT
+set_location_assignment PIN_79 -to OUT_5kv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

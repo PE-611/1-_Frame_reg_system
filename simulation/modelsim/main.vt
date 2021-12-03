@@ -17,7 +17,7 @@
 // suit user's needs .Comments are provided in each section to help the user    
 // fill out necessary details.                                                  
 // *****************************************************************************
-// Generated on "10/12/2021 14:47:25"
+// Generated on "11/17/2021 13:50:04"
                                                                                 
 // Verilog Test Bench template for design : main
 // 
@@ -30,46 +30,40 @@ module main_vlg_tst();
 // general purpose registers
 reg eachvec;
 // test vector input registers
-reg treg_SDA;
-reg clk;
-reg reset;
-reg transmit_enable;
+reg CLK;
+reg UART_RX_IN;
 // wires                                               
-wire ERROR_TARNSMIT;
-wire SCL;
-wire SDA;
-wire antibounce_flg;
+wire CS_SPI_RES;
+wire OUT_SPI_CLK;
+wire SDI;
+wire UART_TX_OUT;
+wire f;
+wire [7:0]  led;
 
 // assign statements (if any)                          
-assign SDA = treg_SDA;
 main i1 (
 // port map - connection between master ports and signals/registers   
-	.ERROR_TARNSMIT(ERROR_TARNSMIT),
-	.SCL(SCL),
-	.SDA(SDA),
-	.antibounce_flg(antibounce_flg),
-	.clk(clk),
-	.reset(reset),
-	.transmit_enable(transmit_enable)
+	.CLK(CLK),
+	.CS_SPI_RES(CS_SPI_RES),
+	.OUT_SPI_CLK(OUT_SPI_CLK),
+	.SDI(SDI),
+	.UART_RX_IN(UART_RX_IN),
+	.UART_TX_OUT(UART_TX_OUT),
+	.f(f),
+	.led(led)
 );
-initial begin                                                  
-clk <= 1'b0;
-reset <= 1'b0;
-transmit_enable <= 1'b1;
-treg_SDA <= 1'b1;
-                                         
+initial begin                                                
+CLK <= 1'b0;
+UART_RX_IN <= 1'b1;                                                
+                                       
 $display("Running testbench");                       
-end
+end                                                    
+always begin
+#1 CLK <= !CLK;                                                                            
+end      
 
-initial begin
-	
-end
-                                                    
 always begin
-	#1 clk <= !clk;
-end   
-always begin
-	#10000000 transmit_enable <= !transmit_enable;
-end                                                 
+#10000000 UART_RX_IN <= !UART_RX_IN;                                                                           
+end                                                
 endmodule
 

@@ -1,4 +1,12 @@
 
+State Machine - |main|UART_Tx:t1|state
+Name state.DEC_BIT_CNT state.SET_DATA_BIT state.START_BIT state.IDLE state.STOP_TRANSMIT 
+state.IDLE 0 0 0 0 0 
+state.START_BIT 0 0 1 1 0 
+state.SET_DATA_BIT 0 1 0 1 0 
+state.DEC_BIT_CNT 1 0 0 1 0 
+state.STOP_TRANSMIT 0 0 0 1 1 
+
 State Machine - |main|SPI_TX:s1|state
 Name state.STOP_TRANSMIT state.DEC_BIT_CNT state.SET_LOW_CLK_SPI state.SET_HIGH_CLK_SPI state.SET_BIT_TO_TRANSMITTING state.STARTING_TRANSMITTING state.IDLE 
 state.IDLE 0 0 0 0 0 0 0 

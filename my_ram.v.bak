@@ -4,7 +4,7 @@
 // Company : GSC RF TRINITI										//
 // Description : RAM												  	//
 // Start design : 14.10.2020 										//
-// Last revision : 				 									//
+// Last revision : 15.11.2021 									//
 ///////////////////////////////////////////////////////////
 
 module my_RAM (input rw, cs, clr,

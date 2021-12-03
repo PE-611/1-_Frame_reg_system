@@ -1,72 +1,301 @@
-module main (input clk, output reg CS, spi_clk, sdi 
+///////////////////////////////////////////////////////////
+// Name File : Project 1-frame reg system.v					//
+// Author : Dyomkin Pavel Mikhailovich 						//
+// Company : GSC RF TRINITI										//
+// Description : 													  	//
+// Start design : 12.10.2021 										//
+// Last revision : 22.10.2021 									//
+///////////////////////////////////////////////////////////
+
+module main (input CLK, UART_RX_IN, 
+				 output reg CS_SPI_RES, OUT_SPI_CLK, SDI,
+				 output reg [7:0] led,
+				 output UART_TX_OUT,
+				 output reg f
+				 
 				);
+
 				
 
-reg [24:0] cnt;
-initial cnt <= 1'b0;
-reg [7:0] data_out;
-initial data_out <= 1'b0;
- 
+wire [9:0] data_out_for_r;												//
+reg [7:0] code_of_resistance;											//
+initial code_of_resistance <= 1'b0;									// 
+reg [1:0] choice_res;													//
+initial choice_res <= 1'b00;											//
+assign data_out_for_r = {choice_res, code_of_resistance}; 	//		it is for SPI module
+																				//
+reg START_TRANSMIT;														//
+initial START_TRANSMIT <= 1'b0;										//
+reg RESET_SPI;																//
+initial RESET_SPI <= 1'b1;												//
+wire [2:0] SELECTOR_CS;													//
 
-reg [24:0] cnt_spi_clk; 
-initial cnt_spi_clk <= 1'b0;
+wire READINESS_BYTE;														//		it is for UART module
+wire [7:0] DATA_FROM_UART;												//
+wire [7:0] DATA_FROM_UART_reverse;
+assign DATA_FROM_UART_reverse = {DATA_FROM_UART[0],DATA_FROM_UART[1],DATA_FROM_UART[2],DATA_FROM_UART[3],DATA_FROM_UART[4],DATA_FROM_UART[5],DATA_FROM_UART[6],DATA_FROM_UART[7]}; // Разворот бит в шине
 
-reg [7:0] bit_cnt;
-initial bit_cnt <= 1'b0;
+reg RW;																		//
+initial RW <= 1'b0;														//
+reg CS;																		//
+initial CS <= 1'b1;														//		it is for RAM
+reg [7:0] ADDR;															//
+initial ADDR <= 1'b0;													//
+wire DATA_FROM_RAM;														//
+wire [7:0] data_in;
+reg res_addr_cnt;
+initial res_addr_cnt <= 1'b0; 
+reg restart_cs;
+initial restart_cs <= 1'b0;
+
+reg TX_LAUNCH;
+initial TX_LAUNCH <= 1'b0;
+reg RESET;
+initial RESET <= 1'b1;
 
 
-initial CS <= 1'b1;
-initial spi_clk <= 1'b0;
-initial sdi <= 1'b0;
+
+//SPI_TX s1 (.clk(CLK), .data(data_out_for_r), .start_transmit(START_TRANSMIT), .reset(RESET_SPI), .cs(CS_SPI_RES), .sdi(SDI), .out_spi_clk(OUT_SPI_CLK), 
+//.selector_cs(SELECTOR_CS));
 
 
-always @(posedge clk) begin
+UART_Rx u1 (.clk_Rx(CLK), .Rx_in(UART_RX_IN), .data_out(DATA_FROM_UART), .Readiness_byte(READINESS_BYTE));	
 
-	cnt <= cnt + 1'b1;
+
+UART_Tx t1 (.clk_Tx(CLK), .tx_launch(TX_LAUNCH), .reset(RESET), .Tx_out(UART_TX_OUT));
+
+my_RAM  r1 (.rw(RW), .cs(CS), .data_in(DATA_FROM_UART_reverse), .addr(ADDR), .data_out(DATA_FROM_RAM));
+
+
+
+
+
+reg [30:0] cnt;
+reg del_1_tick_flag;
+reg rst_uart_tx;
+initial f <= 1'b0;
+
+////////////////////////////////////////////////////////Echo test////////////////////////////////////////////////////////
+
+always @(posedge READINESS_BYTE or posedge rst_uart_tx) begin
 	
-	if (cnt == 24'd100) begin
-		cnt <= 1'b0;
-		CS <= ~CS;
-		data_out <= data_out + 1'b1;
+	RESET <= 1'b1;
+	TX_LAUNCH <= 1'b0;
+	
+	if (READINESS_BYTE)	begin
+		if (DATA_FROM_UART_reverse == 8'b01110010) begin 			// check symbol "r"? ASII? 
+		
+			TX_LAUNCH <= 1'b1;
+																					
+		end
 	end
 	
-	if (data_out == 8'd255) begin
-		data_out <= 1'b0;
+	else begin
+		TX_LAUNCH <= 1'b0;
 	end
 
 end
 
 
-always @(posedge clk) begin
+always @(posedge CLK) begin
 	
-	if (CS == 1'b0) begin
+	if (TX_LAUNCH <= 1'b1) begin
+		del_1_tick_flag <= 1'b1;
+	end
+	
+	if (del_1_tick_flag == 1'b1) begin
+		rst_uart_tx <= 1'b1;
+	end
+	
+	
+	if (rst_uart_tx == 1'b1) begin
+		rst_uart_tx <= 1'b0;
+	end
+	
+end
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////Save or "write" data from UART_rx in RAM////////////////////////////////
+
+always @(posedge READINESS_BYTE or posedge res_addr_cnt or posedge restart_cs) begin
+
+	if (READINESS_BYTE) begin
 		
-		cnt_spi_clk <= cnt_spi_clk + 1'b1;
-		
-		if (cnt_spi_clk == 24'd6) begin
-			cnt_spi_clk <= 1'b0;
-			spi_clk <= ~spi_clk;
+		if (DATA_FROM_UART_reverse != 8'b01110010) begin
+			RW <= 1'b1;
+			CS <= 1'b0;
+			ADDR <= ADDR + 1'b1; 
 		end
 		
-		
-		
+		else begin
+			RW <= 1'b0;
+			CS <= 1'b1;
+		end
+			
 	end
-
 	
+	else if (res_addr_cnt) begin
+		ADDR <= 1'b0;
+	end
+	
+	else if (restart_cs) begin
+		CS <= 1'b1;
+	end
 end
 
-always @(posedge spi_clk) begin 
 
-	sdi <= data_out[bit_cnt];
-	bit_cnt <= bit_cnt + 1'b1;
+always @(posedge CLK) begin
 	
-	if (bit_cnt == 7'd7) begin
-		bit_cnt <= 1'b0;
-	end  
-
+	if (ADDR == 8'd9) begin
+		res_addr_cnt <= 1'b1;
+		f <= 1'b1;
+	end
+	
+	if (res_addr_cnt == 1'b1) begin
+		res_addr_cnt <= 1'b0;
+	end
+	
+	if (CS == 1'b0) begin
+		restart_cs <= 1'b1;
+	end
+	
+	if (restart_cs == 1'b1) begin
+		restart_cs <= 1'b0;
+	end
 end
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+	
 				
 
 endmodule
+
+
+
+
+/*
+
+	if (DATA_FROM_UART_reverse == 8'b01110010) begin 			// check symbol "r"? ASII? 
+	
+		led <= 8'b01110010;
+																				// To check reaction on receive chek symbol, UART RX check
+	end
+
+	else begin
+		led <= 8'b11111111;
+	end
+	
+	
+*/
+
+
+
+
+
+/*
+
+
+always @(posedge CLK) begin
+	
+	cnt <= cnt + 1'b1;
+	
+	
+	if (cnt == 30'd100000000) begin
+		cnt <= 1'b0;
+		if (READINESS_BYTE == 1'b0) begin
+			CS <= 1'b0;
+			ADDR <= ADDR + 1'b1;
+			RW <= 1'b0;
+			
+		end
+	end
+																				// To check RAM
+	if (READINESS_BYTE == 1'b1) begin
+		CS <= 1'b0;
+		RW <= 1'b1;
+		ADDR <= ADDR + 1'b1;
+	end
+													
+
+	
+	if (CS == 1'b0) begin
+		CS <= 1'b1;
+	end	
+	
+	if (RW == 1'b1) begin
+		RW <= 1'b0;
+	end
+	
+	if (ADDR >= 7'd15) begin
+		ADDR <= 1'b0;
+	end
+	
+end
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+reg [30:0] cnt;
+
+
+
+always @(posedge CLK) begin
+	cnt <= cnt + 1'b1;
+	if (cnt == 30'd100000000) begin
+		cnt <= 1'b0;
+		START_TRANSMIT <= 1'b1;
+		code_of_resistance <= code_of_resistance + 1'b1; 		// To check SPI resistor
+		RESET_SPI <= 1'b1;		
+	end	
+	
+	if (START_TRANSMIT == 1'b1) begin
+		START_TRANSMIT <= 1'b0;
+	end
+
+end
+
+
+
+
+
+
+
+*/
