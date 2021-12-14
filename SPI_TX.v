@@ -10,15 +10,17 @@
 module SPI_TX (input clk, start_transmit, reset,
 					input [2:0] selector_cs,
 					input [9:0] data,
-					output reg sdi, cs, out_spi_clk
-					// output reg cs1,cs2,cs3
+					output reg sdi,  out_spi_clk,
+				   output reg [3:0] sep_cs
 					);
 
 initial sdi 			<= 1'b0;
-initial cs 				<= 1'b1;
-initial out_spi_clk  <= 1'b0;					
+initial out_spi_clk  <= 1'b0;
 
+reg cs;
+initial cs <= 1'b1;
 
+initial sep_cs <= 4'b1111;
 
 
 reg [7:0] state;	
@@ -47,7 +49,29 @@ initial cnt <= 1'b0;
 reg [7:0] bit_cnt;
 initial bit_cnt <= 8'd9;
 
-			
+
+
+always @(posedge clk) begin
+	
+	if (selector_cs == 3'd0) begin
+		sep_cs[0] <= cs;
+	end
+	
+	if (selector_cs == 3'd1) begin
+		sep_cs[1] <= cs;
+	end
+	
+	if (selector_cs == 3'd2) begin
+		sep_cs[2] <= cs;
+	end
+	
+	if (selector_cs == 3'd3) begin
+		sep_cs[3] <= cs;
+	end
+	
+end
+
+		
 			
 always @* 	
 		

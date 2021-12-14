@@ -1,5 +1,5 @@
 Analysis & Synthesis report for 1-frame
-Fri Dec 03 15:39:27 2021
+Tue Dec 14 16:05:04 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -16,18 +16,19 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   8. State Machine - |main|UART_Tx:t1|state
   9. State Machine - |main|SPI_TX:s1|state
  10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: UART_Rx:u1
- 15. Parameter Settings for User Entity Instance: UART_Tx:t1
- 16. Port Connectivity Checks: "my_RAM:r1"
- 17. Port Connectivity Checks: "UART_Tx:t1"
- 18. Port Connectivity Checks: "UART_Rx:u1"
- 19. Post-Synthesis Netlist Statistics for Top Partition
- 20. Elapsed Time Per Partition
- 21. Analysis & Synthesis Messages
- 22. Analysis & Synthesis Suppressed Messages
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: UART_Rx:u1
+ 16. Parameter Settings for User Entity Instance: UART_Tx:t1
+ 17. Port Connectivity Checks: "my_RAM:r1"
+ 18. Port Connectivity Checks: "UART_Tx:t1"
+ 19. Port Connectivity Checks: "UART_Rx:u1"
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
+ 23. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -53,16 +54,16 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Dec 03 15:39:27 2021       ;
+; Analysis & Synthesis Status        ; Successful - Tue Dec 14 16:05:04 2021       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; 1-frame                                     ;
 ; Top-level Entity Name              ; main                                        ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 633                                         ;
-;     Total combinational functions  ; 545                                         ;
-;     Dedicated logic registers      ; 369                                         ;
-; Total registers                    ; 369                                         ;
-; Total pins                         ; 18                                          ;
+; Total logic elements               ; 2,115                                       ;
+;     Total combinational functions  ; 1,586                                       ;
+;     Dedicated logic registers      ; 1,061                                       ;
+; Total registers                    ; 1061                                        ;
+; Total pins                         ; 20                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -171,8 +172,9 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
 +----------------------------+-------------+
 
 
@@ -196,30 +198,30 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 633       ;
+; Estimated Total logic elements              ; 2,115     ;
 ;                                             ;           ;
-; Total combinational functions               ; 545       ;
+; Total combinational functions               ; 1586      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 157       ;
-;     -- 3 input functions                    ; 95        ;
-;     -- <=2 input functions                  ; 293       ;
+;     -- 4 input functions                    ; 478       ;
+;     -- 3 input functions                    ; 557       ;
+;     -- <=2 input functions                  ; 551       ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 247       ;
-;     -- arithmetic mode                      ; 298       ;
+;     -- normal mode                          ; 630       ;
+;     -- arithmetic mode                      ; 956       ;
 ;                                             ;           ;
-; Total registers                             ; 369       ;
-;     -- Dedicated logic registers            ; 369       ;
+; Total registers                             ; 1061      ;
+;     -- Dedicated logic registers            ; 1061      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 18        ;
+; I/O pins                                    ; 20        ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; CLK~input ;
-; Maximum fan-out                             ; 281       ;
-; Total fan-out                               ; 2618      ;
-; Average fan-out                             ; 2.76      ;
+; Maximum fan-out                             ; 533       ;
+; Total fan-out                               ; 7853      ;
+; Average fan-out                             ; 2.92      ;
 +---------------------------------------------+-----------+
 
 
@@ -228,12 +230,19 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name       ; Entity Name     ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------+-----------------+--------------+
-; |main                      ; 545 (18)            ; 369 (12)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 18   ; 0            ; 0          ; |main                     ; main            ; work         ;
+; |main                      ; 1586 (18)           ; 1061 (12)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 20   ; 0            ; 0          ; |main                     ; main            ; work         ;
 ;    |Exposition:EX1|        ; 140 (140)           ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Exposition:EX1      ; Exposition      ; work         ;
-;    |SPI_TX:s1|             ; 122 (122)           ; 69 (69)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|SPI_TX:s1           ; SPI_TX          ; work         ;
+;    |Exposition:EX2|        ; 140 (140)           ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Exposition:EX2      ; Exposition      ; work         ;
+;    |Exposition:EX3|        ; 140 (140)           ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Exposition:EX3      ; Exposition      ; work         ;
+;    |Exposition:EX4|        ; 140 (140)           ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Exposition:EX4      ; Exposition      ; work         ;
+;    |Exposition:EX5|        ; 140 (140)           ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Exposition:EX5      ; Exposition      ; work         ;
+;    |Exposition:EX6|        ; 140 (140)           ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Exposition:EX6      ; Exposition      ; work         ;
+;    |Exposition:EX7|        ; 140 (140)           ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Exposition:EX7      ; Exposition      ; work         ;
+;    |Exposition:EX8|        ; 139 (139)           ; 36 (36)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|Exposition:EX8      ; Exposition      ; work         ;
+;    |SPI_TX:s1|             ; 116 (116)           ; 69 (69)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|SPI_TX:s1           ; SPI_TX          ; work         ;
 ;    |UART_Rx:u1|            ; 133 (133)           ; 89 (89)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|UART_Rx:u1          ; UART_Rx         ; work         ;
 ;    |UART_Tx:t1|            ; 58 (58)             ; 40 (40)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|UART_Tx:t1          ; UART_Tx         ; work         ;
-;    |my_RAM:r1|             ; 14 (14)             ; 80 (80)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|my_RAM:r1           ; my_RAM          ; work         ;
+;    |my_RAM:r1|             ; 82 (82)             ; 520 (520)                 ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|my_RAM:r1           ; my_RAM          ; work         ;
 ;    |time_of_hold_HV:TH1|   ; 60 (60)             ; 43 (43)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |main|time_of_hold_HV:TH1 ; time_of_hold_HV ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -269,31 +278,43 @@ Encoding Type:  One-Hot
 +-------------------------------+---------------------+-------------------+-----------------------+------------------------+-------------------------------+-----------------------------+------------+
 
 
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; choice_res[0,1]                        ; Stuck at GND due to stuck port data_in ;
-; RESET_SPI                              ; Stuck at VCC due to stuck port data_in ;
-; RW~en                                  ; Lost fanout                            ;
-; UART_Tx:t1|state~4                     ; Lost fanout                            ;
-; UART_Tx:t1|state~5                     ; Lost fanout                            ;
-; UART_Tx:t1|state~7                     ; Lost fanout                            ;
-; UART_Tx:t1|state~8                     ; Lost fanout                            ;
-; UART_Tx:t1|state~9                     ; Lost fanout                            ;
-; UART_Tx:t1|state~10                    ; Lost fanout                            ;
-; UART_Tx:t1|state~11                    ; Lost fanout                            ;
-; SPI_TX:s1|state~4                      ; Lost fanout                            ;
-; SPI_TX:s1|state~5                      ; Lost fanout                            ;
-; SPI_TX:s1|state~6                      ; Lost fanout                            ;
-; SPI_TX:s1|state~7                      ; Lost fanout                            ;
-; SPI_TX:s1|state~8                      ; Lost fanout                            ;
-; SPI_TX:s1|state~9                      ; Lost fanout                            ;
-; SPI_TX:s1|state~10                     ; Lost fanout                            ;
-; SPI_TX:s1|state~11                     ; Lost fanout                            ;
-; Total Number of Removed Registers = 19 ;                                        ;
-+----------------------------------------+----------------------------------------+
++--------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                   ;
++----------------------------------------+---------------------------------------------+
+; Register name                          ; Reason for Removal                          ;
++----------------------------------------+---------------------------------------------+
+; RESET_SPI                              ; Stuck at VCC due to stuck port data_in      ;
+; SELECTOR_CS[0..2]                      ; Stuck at GND due to stuck port data_in      ;
+; SPI_TX:s1|sep_cs[1..3]                 ; Stuck at VCC due to stuck port clock_enable ;
+; RW~en                                  ; Lost fanout                                 ;
+; SPI_TX:s1|sdi                          ; Stuck at GND due to stuck port data_in      ;
+; UART_Tx:t1|state~4                     ; Lost fanout                                 ;
+; UART_Tx:t1|state~5                     ; Lost fanout                                 ;
+; UART_Tx:t1|state~7                     ; Lost fanout                                 ;
+; UART_Tx:t1|state~8                     ; Lost fanout                                 ;
+; UART_Tx:t1|state~9                     ; Lost fanout                                 ;
+; UART_Tx:t1|state~10                    ; Lost fanout                                 ;
+; UART_Tx:t1|state~11                    ; Lost fanout                                 ;
+; SPI_TX:s1|state~4                      ; Lost fanout                                 ;
+; SPI_TX:s1|state~5                      ; Lost fanout                                 ;
+; SPI_TX:s1|state~6                      ; Lost fanout                                 ;
+; SPI_TX:s1|state~7                      ; Lost fanout                                 ;
+; SPI_TX:s1|state~8                      ; Lost fanout                                 ;
+; SPI_TX:s1|state~9                      ; Lost fanout                                 ;
+; SPI_TX:s1|state~10                     ; Lost fanout                                 ;
+; SPI_TX:s1|state~11                     ; Lost fanout                                 ;
+; Total Number of Removed Registers = 24 ;                                             ;
++----------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                ;
++----------------+---------------------------+---------------------------------------------------------------+
+; Register name  ; Reason for Removal        ; Registers Removed due to This Register                        ;
++----------------+---------------------------+---------------------------------------------------------------+
+; SELECTOR_CS[2] ; Stuck at GND              ; SPI_TX:s1|sep_cs[1], SPI_TX:s1|sep_cs[2], SPI_TX:s1|sep_cs[3] ;
+;                ; due to stuck port data_in ;                                                               ;
++----------------+---------------------------+---------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -301,12 +322,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 369   ;
+; Total registers                              ; 1061  ;
 ; Number of registers using Synchronous Clear  ; 160   ;
 ; Number of registers using Synchronous Load   ; 25    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 161   ;
+; Number of registers using Clock Enable       ; 825   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -316,12 +337,13 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; SPI_TX:s1|cs                           ; 2       ;
+; SPI_TX:s1|sep_cs[0]                    ; 1       ;
 ; UART_Tx:t1|Tx_out                      ; 2       ;
-; SPI_TX:s1|bit_cnt[3]                   ; 3       ;
-; SPI_TX:s1|bit_cnt[0]                   ; 5       ;
-; CS                                     ; 83      ;
-; Total number of inverted registers = 5 ;         ;
+; SPI_TX:s1|cs                           ; 2       ;
+; SPI_TX:s1|bit_cnt[0]                   ; 2       ;
+; SPI_TX:s1|bit_cnt[3]                   ; 2       ;
+; CS                                     ; 523     ;
+; Total number of inverted registers = 6 ;         ;
 +----------------------------------------+---------+
 
 
@@ -330,15 +352,22 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |main|UART_Tx:t1|bit_cnt[7]          ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |main|SPI_TX:s1|bit_cnt[6]           ;
-; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |main|UART_Tx:t1|cnt[13]             ;
-; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |main|UART_Rx:u1|cnt[15]             ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |main|time_of_hold_HV:TH1|cnt1[6]    ;
-; 3:1                ; 33 bits   ; 66 LEs        ; 33 LEs               ; 33 LEs                 ; Yes        ; |main|time_of_hold_HV:TH1|cnt[7]     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |main|UART_Tx:t1|bit_cnt[3]          ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |main|SPI_TX:s1|bit_cnt[1]           ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |main|UART_Tx:t1|cnt[19]             ;
+; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |main|UART_Rx:u1|cnt[22]             ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |main|time_of_hold_HV:TH1|cnt1[7]    ;
+; 3:1                ; 33 bits   ; 66 LEs        ; 33 LEs               ; 33 LEs                 ; Yes        ; |main|time_of_hold_HV:TH1|cnt[9]     ;
 ; 3:1                ; 25 bits   ; 50 LEs        ; 25 LEs               ; 25 LEs                 ; Yes        ; |main|SPI_TX:s1|transmit_flg_cnt[20] ;
-; 5:1                ; 25 bits   ; 75 LEs        ; 50 LEs               ; 25 LEs                 ; Yes        ; |main|SPI_TX:s1|cnt[1]               ;
-; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX1|cnt[3]          ;
+; 5:1                ; 25 bits   ; 75 LEs        ; 50 LEs               ; 25 LEs                 ; Yes        ; |main|SPI_TX:s1|cnt[20]              ;
+; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX1|cnt[30]         ;
+; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX2|cnt[21]         ;
+; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX3|cnt[6]          ;
+; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX4|cnt[10]         ;
+; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX5|cnt[11]         ;
+; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX6|cnt[15]         ;
+; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX7|cnt[2]          ;
+; 5:1                ; 33 bits   ; 99 LEs        ; 33 LEs               ; 66 LEs                 ; Yes        ; |main|Exposition:EX8|cnt[9]          ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |main|SPI_TX:s1|bit_cnt[3]           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------+
 
@@ -368,14 +397,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "my_RAM:r1"                                                                                                                                       ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                                                                                      ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; clr      ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-; data_out ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
-+----------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "my_RAM:r1"                                                                                                                                          ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port        ; Type   ; Severity ; Details                                                                                                                                      ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; res_value_1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; res_value_2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; res_value_3 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; res_value_4 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; res_value_5 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; res_value_6 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; res_value_7 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; res_value_8 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; clr         ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; data_out    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++-------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -403,26 +440,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 18                          ;
-; cycloneiii_ff         ; 369                         ;
-;     ENA               ; 120                         ;
+; boundary_port         ; 20                          ;
+; cycloneiii_ff         ; 1061                        ;
+;     ENA               ; 784                         ;
 ;     ENA SCLR          ; 41                          ;
 ;     SCLR              ; 119                         ;
 ;     SLD               ; 25                          ;
-;     plain             ; 64                          ;
-; cycloneiii_lcell_comb ; 547                         ;
-;     arith             ; 298                         ;
-;         2 data inputs ; 230                         ;
-;         3 data inputs ; 68                          ;
-;     normal            ; 249                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 14                          ;
-;         2 data inputs ; 50                          ;
-;         3 data inputs ; 27                          ;
-;         4 data inputs ; 157                         ;
+;     plain             ; 92                          ;
+; cycloneiii_lcell_comb ; 1589                        ;
+;     arith             ; 956                         ;
+;         2 data inputs ; 454                         ;
+;         3 data inputs ; 502                         ;
+;     normal            ; 633                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 21                          ;
+;         2 data inputs ; 77                          ;
+;         3 data inputs ; 55                          ;
+;         4 data inputs ; 478                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.10                        ;
-; Average LUT depth     ; 3.88                        ;
+; Average LUT depth     ; 4.66                        ;
 +-----------------------+-----------------------------+
 
 
@@ -431,7 +468,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -441,7 +478,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Fri Dec 03 15:39:17 2021
+    Info: Processing started: Tue Dec 14 16:04:54 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off 1-frame -c 1-frame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -450,56 +487,58 @@ Info (12021): Found 1 design units, including 1 entities, in source file main.v
 Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
     Info (12023): Found entity 1: UART_Tx File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/UART_Tx.v Line: 9
 Info (12127): Elaborating entity "main" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at main.v(47): object "res_addr_cnt" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 47
-Warning (10036): Verilog HDL or VHDL warning at main.v(49): object "restart_cs" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 49
-Warning (10036): Verilog HDL or VHDL warning at main.v(85): object "RAM_data_readiness_flag" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 85
-Critical Warning (10237): Verilog HDL warning at main.v(95): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 95
-Critical Warning (10237): Verilog HDL warning at main.v(96): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 96
-Warning (10034): Output port "led" at main.v(12) has no driver File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
+Warning (10036): Verilog HDL or VHDL warning at main.v(28): object "data_out_for_r_1" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 28
+Warning (10036): Verilog HDL or VHDL warning at main.v(29): object "data_out_for_r_2" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 29
+Warning (10036): Verilog HDL or VHDL warning at main.v(30): object "data_out_for_r_3" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 30
+Warning (10036): Verilog HDL or VHDL warning at main.v(31): object "data_out_for_r_4" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 31
+Warning (10036): Verilog HDL or VHDL warning at main.v(32): object "data_out_for_r_5" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 32
+Warning (10036): Verilog HDL or VHDL warning at main.v(33): object "data_out_for_r_6" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 33
+Warning (10036): Verilog HDL or VHDL warning at main.v(34): object "data_out_for_r_7" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 34
+Warning (10036): Verilog HDL or VHDL warning at main.v(35): object "data_out_for_r_8" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 35
+Warning (10036): Verilog HDL or VHDL warning at main.v(87): object "res_addr_cnt" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 87
+Warning (10036): Verilog HDL or VHDL warning at main.v(89): object "restart_cs" assigned a value but never read File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 89
+Critical Warning (10237): Verilog HDL warning at main.v(163): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 163
+Critical Warning (10237): Verilog HDL warning at main.v(164): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 164
 Warning (12125): Using design file exposition.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: Exposition File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/exposition.v Line: 11
-Info (12128): Elaborating entity "Exposition" for hierarchy "Exposition:EX1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 63
+Info (12128): Elaborating entity "Exposition" for hierarchy "Exposition:EX1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 118
 Warning (12125): Using design file time_of_hold_hv.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: time_of_hold_HV File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/time_of_hold_hv.v Line: 10
-Info (12128): Elaborating entity "time_of_hold_HV" for hierarchy "time_of_hold_HV:TH1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 65
+Info (12128): Elaborating entity "time_of_hold_HV" for hierarchy "time_of_hold_HV:TH1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 128
 Warning (12125): Using design file spi_tx.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: SPI_TX File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/spi_tx.v Line: 10
-Info (12128): Elaborating entity "SPI_TX" for hierarchy "SPI_TX:s1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 68
+Info (12128): Elaborating entity "SPI_TX" for hierarchy "SPI_TX:s1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 131
 Warning (12125): Using design file uart_rx.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: UART_Rx File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/uart_rx.v Line: 9
-Info (12128): Elaborating entity "UART_Rx" for hierarchy "UART_Rx:u1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 71
+Info (12128): Elaborating entity "UART_Rx" for hierarchy "UART_Rx:u1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 134
 Warning (10230): Verilog HDL assignment warning at uart_rx.v(111): truncated value with size 9 to match size of target (8) File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/uart_rx.v Line: 111
-Info (12128): Elaborating entity "UART_Tx" for hierarchy "UART_Tx:t1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 74
+Info (12128): Elaborating entity "UART_Tx" for hierarchy "UART_Tx:t1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 137
 Warning (10034): Output port "UART_clk" at UART_Tx.v(11) has no driver File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/UART_Tx.v Line: 11
 Warning (12125): Using design file my_ram.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: my_RAM File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/my_ram.v Line: 10
-Info (12128): Elaborating entity "my_RAM" for hierarchy "my_RAM:r1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 76
+Info (12128): Elaborating entity "my_RAM" for hierarchy "my_RAM:r1" File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 144
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13049): Converted tri-state buffer "RW~synth" feeding internal logic into a wire File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 39
+    Warning (13049): Converted tri-state buffer "RW~synth" feeding internal logic into a wire File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 79
 Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "led[0]" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
-    Warning (13410): Pin "led[1]" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
-    Warning (13410): Pin "led[2]" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
-    Warning (13410): Pin "led[3]" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
-    Warning (13410): Pin "led[4]" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
-    Warning (13410): Pin "led[5]" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
-    Warning (13410): Pin "led[6]" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
-    Warning (13410): Pin "led[7]" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
+    Warning (13410): Pin "SDI" is stuck at GND File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 11
+    Warning (13410): Pin "CS_SPI_RES[1]" is stuck at VCC File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
+    Warning (13410): Pin "CS_SPI_RES[2]" is stuck at VCC File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
+    Warning (13410): Pin "CS_SPI_RES[3]" is stuck at VCC File: C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/main.v Line: 12
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 16 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/output_files/1-frame.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 653 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2137 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 14 output pins
-    Info (21061): Implemented 635 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 26 warnings
-    Info: Peak virtual memory: 4797 megabytes
-    Info: Processing ended: Fri Dec 03 15:39:27 2021
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 2117 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 28 warnings
+    Info: Peak virtual memory: 4787 megabytes
+    Info: Processing ended: Tue Dec 14 16:05:04 2021
     Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:19
+    Info: Total CPU time (on all processors): 00:00:20
 
 
 +------------------------------------------+

@@ -147,16 +147,16 @@ RESERVED_INPUT               : 75        :        :                   :         
 RESERVED_INPUT               : 76        :        :                   :         : 5         :                
 RESERVED_INPUT               : 77        :        :                   :         : 5         :                
 RESERVED_INPUT               : 78        :        :                   :         : 5         :                
-OUT_5kv                      : 79        : output : 2.5 V             :         : 5         : Y              
-led[1]                       : 80        : output : 2.5 V             :         : 5         : Y              
-led[2]                       : 81        : output : 2.5 V             :         : 5         : Y              
+EX_OUT1                      : 79        : output : 2.5 V             :         : 5         : Y              
+EX_OUT2                      : 80        : output : 2.5 V             :         : 5         : Y              
+EX_OUT3                      : 81        : output : 2.5 V             :         : 5         : Y              
 VCCIO5                       : 82        : power  :                   : 2.5V    : 5         :                
 GND                          : 83        : gnd    :                   :         :           :                
-led[3]                       : 84        : output : 2.5 V             :         : 5         : Y              
-led[4]                       : 85        : output : 2.5 V             :         : 5         : Y              
-led[5]                       : 86        : output : 2.5 V             :         : 5         : Y              
-led[6]                       : 87        : output : 2.5 V             :         : 5         : Y              
-led[7]                       : 88        : output : 2.5 V             :         : 6         : Y              
+EX_OUT4                      : 84        : output : 2.5 V             :         : 5         : Y              
+EX_OUT5                      : 85        : output : 2.5 V             :         : 5         : Y              
+EX_OUT6                      : 86        : output : 2.5 V             :         : 5         : Y              
+EX_OUT7                      : 87        : output : 2.5 V             :         : 5         : Y              
+EX_OUT8                      : 88        : output : 2.5 V             :         : 6         : Y              
 RESERVED_INPUT               : 89        :        :                   :         : 6         :                
 RESERVED_INPUT               : 90        :        :                   :         : 6         :                
 RESERVED_INPUT               : 91        :        :                   :         : 6         :                
@@ -167,21 +167,21 @@ GND                          : 95        : gnd    :                   :         
 RESERVED_INPUT               : 96        :        :                   :         : 6         :                
 RESERVED_INPUT               : 97        :        :                   :         : 6         :                
 launch_5kV                   : 98        : input  : 2.5 V             :         : 6         : Y              
-CS_SPI_RES                   : 99        : output : 2.5 V             :         : 6         : Y              
+OUT_5kv                      : 99        : output : 2.5 V             :         : 6         : Y              
 launch_ex                    : 100       : input  : 2.5 V             :         : 6         : Y              
 RESERVED_INPUT               : 101       :        :                   :         : 6         :                
-EX_OUT                       : 102       : output : 2.5 V             :         : 6         : Y              
+CS_SPI_RES[3]                : 102       : output : 2.5 V             :         : 6         : Y              
 VCCIO6                       : 103       : power  :                   : 2.5V    : 6         :                
 GND                          : 104       : gnd    :                   :         :           :                
-led[0]                       : 105       : output : 2.5 V             :         : 6         : N              
-RESERVED_INPUT               : 106       :        :                   :         : 6         :                
+RESERVED_INPUT               : 105       :        :                   :         : 6         :                
+CS_SPI_RES[2]                : 106       : output : 2.5 V             :         : 6         : Y              
 VCCA3                        : 107       : power  :                   : 3.0V/3.3V :           :                
 VCC_ONE                      : 108       : power  :                   : 3.0V/3.3V :           :                
 VCC_ONE                      : 109       : power  :                   : 3.0V/3.3V :           :                
 RESERVED_INPUT               : 110       :        :                   :         : 7         :                
-RESERVED_INPUT               : 111       :        :                   :         : 7         :                
+CS_SPI_RES[1]                : 111       : output : 2.5 V             :         : 7         : Y              
 RESERVED_INPUT               : 112       :        :                   :         : 7         :                
-RESERVED_INPUT               : 113       :        :                   :         : 7         :                
+CS_SPI_RES[0]                : 113       : output : 2.5 V             :         : 7         : Y              
 RESERVED_INPUT               : 114       :        :                   :         : 7         :                
 VCC_ONE                      : 115       : power  :                   : 3.0V/3.3V :           :                
 GND                          : 116       : gnd    :                   :         :           :                

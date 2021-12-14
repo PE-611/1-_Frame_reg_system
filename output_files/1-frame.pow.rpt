@@ -1,5 +1,5 @@
 Power Analyzer report for 1-frame
-Fri Dec 03 15:39:39 2021
+Tue Dec 14 16:05:22 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -52,19 +52,19 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 8           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.21        ;
+; Average used               ; 1.57        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   6.9%      ;
+;     Processors 2-4         ;  19.0%      ;
 +----------------------------+-------------+
 
 
 +-------------------------------------------------------------------------------------------+
 ; Power Analyzer Summary                                                                    ;
 +----------------------------------------+--------------------------------------------------+
-; Power Analyzer Status                  ; Successful - Fri Dec 03 15:39:39 2021            ;
+; Power Analyzer Status                  ; Successful - Tue Dec 14 16:05:22 2021            ;
 ; Quartus Prime Version                  ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition      ;
 ; Revision Name                          ; 1-frame                                          ;
 ; Top-level Entity Name                  ; main                                             ;
@@ -173,6 +173,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------+--------------------------------------+---------------------------------+-----------------------------------+-----------------------------------+--------------------------------------+
 ; |main                               ; 0.11 mW (0.11 mW)                    ; 0.00 mW (0.00 mW)               ; 0.11 mW (0.11 mW)                 ; 0.00 mW (0.00 mW)                 ; |main                                ;
 ;     |Exposition:EX1                 ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|Exposition:EX1                 ;
+;     |Exposition:EX2                 ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|Exposition:EX2                 ;
+;     |Exposition:EX3                 ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|Exposition:EX3                 ;
+;     |Exposition:EX4                 ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|Exposition:EX4                 ;
+;     |Exposition:EX5                 ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|Exposition:EX5                 ;
+;     |Exposition:EX6                 ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|Exposition:EX6                 ;
+;     |Exposition:EX7                 ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|Exposition:EX7                 ;
+;     |Exposition:EX8                 ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|Exposition:EX8                 ;
 ;     |time_of_hold_HV:TH1            ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|time_of_hold_HV:TH1            ;
 ;     |hard_block:auto_generated_inst ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|hard_block:auto_generated_inst ;
 ;     |my_RAM:r1                      ; 0.00 mW (0.00 mW)                    ; 0.00 mW (0.00 mW)               ; --                                ; 0.00 mW (0.00 mW)                 ; |main|my_RAM:r1                      ;
@@ -218,7 +225,7 @@ refer to the applicable agreement for further details.
 ; 3        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
 ; 4        ; 2.5V          ; 0.25 mA             ; 0.00 mA               ; 0.25 mA              ;
 ; 5        ; 2.5V          ; 0.27 mA             ; 0.00 mA               ; 0.27 mA              ;
-; 6        ; 2.5V          ; 0.27 mA             ; 0.00 mA               ; 0.27 mA              ;
+; 6        ; 2.5V          ; 0.26 mA             ; 0.00 mA               ; 0.26 mA              ;
 ; 7        ; 2.5V          ; 0.26 mA             ; 0.00 mA               ; 0.26 mA              ;
 ; 8        ; 2.5V          ; 0.26 mA             ; 0.00 mA               ; 0.26 mA              ;
 +----------+---------------+---------------------+-----------------------+----------------------+
@@ -235,31 +242,31 @@ refer to the applicable agreement for further details.
 (2) Currents reported in column "Minimum Power Supply Current" are sufficient for power-up, configuration, and user operation of the device.
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------+
-; Confidence Metric Details                                                                                                                         ;
-+----------------------------------------------------------------------------------------+--------------+------------+--------------+---------------+
-; Data Source                                                                            ; Total        ; Pin        ; Registered   ; Combinational ;
-+----------------------------------------------------------------------------------------+--------------+------------+--------------+---------------+
-; Simulation (from file)                                                                 ;              ;            ;              ;               ;
-;     -- Number of signals with Toggle Rate from Simulation                              ; 0 (0.0%)     ; 0 (0.0%)   ; 0 (0.0%)     ; 0 (0.0%)      ;
-;     -- Number of signals with Static Probability from Simulation                       ; 0 (0.0%)     ; 0 (0.0%)   ; 0 (0.0%)     ; 0 (0.0%)      ;
-;                                                                                        ;              ;            ;              ;               ;
-; Node, entity or clock assignment                                                       ;              ;            ;              ;               ;
-;     -- Number of signals with Toggle Rate from Node, entity or clock assignment        ; 0 (0.0%)     ; 0 (0.0%)   ; 0 (0.0%)     ; 0 (0.0%)      ;
-;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 3 (0.2%)     ; 0 (0.0%)   ; 0 (0.0%)     ; 3 (0.4%)      ;
-;                                                                                        ;              ;            ;              ;               ;
-; Vectorless estimation                                                                  ;              ;            ;              ;               ;
-;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 1205 (99.1%) ; 15 (57.7%) ; 369 (100.0%) ; 821 (100.0%)  ;
-;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 25 (2.1%)    ; 9 (34.6%)  ; 0 (0.0%)     ; 16 (1.9%)     ;
-;     -- Number of signals with Static Probability from Vectorless estimation            ; 1202 (98.8%) ; 15 (57.7%) ; 369 (100.0%) ; 818 (99.6%)   ;
-;                                                                                        ;              ;            ;              ;               ;
-; Default assignment                                                                     ;              ;            ;              ;               ;
-;     -- Number of signals with Toggle Rate from Default assignment                      ; 0 (0.0%)     ; 0 (0.0%)   ; 0 (0.0%)     ; 0 (0.0%)      ;
-;     -- Number of signals with Static Probability from Default assignment               ; 11 (0.9%)    ; 11 (42.3%) ; 0 (0.0%)     ; 0 (0.0%)      ;
-;                                                                                        ;              ;            ;              ;               ;
-; Assumed 0                                                                              ;              ;            ;              ;               ;
-;     -- Number of signals with Toggle Rate assumed 0                                    ; 11 (0.9%)    ; 11 (42.3%) ; 0 (0.0%)     ; 0 (0.0%)      ;
-+----------------------------------------------------------------------------------------+--------------+------------+--------------+---------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Confidence Metric Details                                                                                                                          ;
++----------------------------------------------------------------------------------------+--------------+------------+---------------+---------------+
+; Data Source                                                                            ; Total        ; Pin        ; Registered    ; Combinational ;
++----------------------------------------------------------------------------------------+--------------+------------+---------------+---------------+
+; Simulation (from file)                                                                 ;              ;            ;               ;               ;
+;     -- Number of signals with Toggle Rate from Simulation                              ; 0 (0.0%)     ; 0 (0.0%)   ; 0 (0.0%)      ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Simulation                       ; 0 (0.0%)     ; 0 (0.0%)   ; 0 (0.0%)      ; 0 (0.0%)      ;
+;                                                                                        ;              ;            ;               ;               ;
+; Node, entity or clock assignment                                                       ;              ;            ;               ;               ;
+;     -- Number of signals with Toggle Rate from Node, entity or clock assignment        ; 0 (0.0%)     ; 0 (0.0%)   ; 0 (0.0%)      ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Node, entity or clock assignment ; 3 (0.1%)     ; 0 (0.0%)   ; 0 (0.0%)      ; 3 (0.1%)      ;
+;                                                                                        ;              ;            ;               ;               ;
+; Vectorless estimation                                                                  ;              ;            ;               ;               ;
+;     -- Number of signals with Toggle Rate from Vectorless estimation                   ; 3164 (99.7%) ; 17 (60.7%) ; 1061 (100.0%) ; 2086 (100.0%) ;
+;     -- Number of signals with Zero toggle rate, from Vectorless estimation             ; 17 (0.5%)    ; 5 (17.9%)  ; 0 (0.0%)      ; 12 (0.6%)     ;
+;     -- Number of signals with Static Probability from Vectorless estimation            ; 3161 (99.6%) ; 17 (60.7%) ; 1061 (100.0%) ; 2083 (99.9%)  ;
+;                                                                                        ;              ;            ;               ;               ;
+; Default assignment                                                                     ;              ;            ;               ;               ;
+;     -- Number of signals with Toggle Rate from Default assignment                      ; 0 (0.0%)     ; 0 (0.0%)   ; 0 (0.0%)      ; 0 (0.0%)      ;
+;     -- Number of signals with Static Probability from Default assignment               ; 11 (0.3%)    ; 11 (39.3%) ; 0 (0.0%)      ; 0 (0.0%)      ;
+;                                                                                        ;              ;            ;               ;               ;
+; Assumed 0                                                                              ;              ;            ;               ;               ;
+;     -- Number of signals with Toggle Rate assumed 0                                    ; 11 (0.3%)    ; 11 (39.3%) ; 0 (0.0%)      ; 0 (0.0%)      ;
++----------------------------------------------------------------------------------------+--------------+------------+---------------+---------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------+
@@ -276,7 +283,7 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Power Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Fri Dec 03 15:39:37 2021
+    Info: Processing started: Tue Dec 14 16:05:20 2021
 Info: Command: quartus_pow --read_settings_files=off --write_settings_files=off 1-frame -c 1-frame
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (21077): Low junction temperature is 0 degrees C
@@ -285,9 +292,9 @@ Critical Warning (332012): Synopsys Design Constraints File file not found: '1-f
 Warning (332060): Node: CLK was determined to be a clock but was found without an associated clock assignment.
     Info (13166): Register UART_Tx:t1|bit_cnt[2] is being clocked by CLK
 Warning (332060): Node: UART_Rx:u1|UART_clk was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register UART_Rx:u1|data_out[5] is being clocked by UART_Rx:u1|UART_clk
+    Info (13166): Register UART_Rx:u1|data_out[1] is being clocked by UART_Rx:u1|UART_clk
 Warning (332060): Node: CS was determined to be a clock but was found without an associated clock assignment.
-    Info (13166): Register my_RAM:r1|data[7][0] is being clocked by CS
+    Info (13166): Register my_RAM:r1|data[7][1] is being clocked by CS
 Warning (332068): No clocks defined in design.
 Info (223000): Starting Vectorless Power Activity Estimation
 Warning (222013): Relative toggle rates could not be calculated because no clock domain could be identified for some nodes
@@ -298,9 +305,9 @@ Info (334004): Delay annotation completed successfully
 Info (215049): Average toggle rate for this design is 0.000 millions of transitions / sec
 Info (215031): Total thermal power estimate for the design is 116.35 mW
 Info: Quartus Prime Power Analyzer was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 4828 megabytes
-    Info: Processing ended: Fri Dec 03 15:39:39 2021
+    Info: Peak virtual memory: 4831 megabytes
+    Info: Processing ended: Tue Dec 14 16:05:22 2021
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Total CPU time (on all processors): 00:00:04
 
 

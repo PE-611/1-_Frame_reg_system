@@ -4,15 +4,11 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "CS_SPI_RES",
-					"strict" : false
-				},
-				{
 					"name" : "OUT_SPI_CLK",
 					"strict" : false
 				},
 				{
-					"name" : "SDI",
+					"name" : "CS_SPI_RES[0]",
 					"strict" : false
 				},
 				{
@@ -20,7 +16,35 @@
 					"strict" : false
 				},
 				{
-					"name" : "EX_OUT",
+					"name" : "EX_OUT1",
+					"strict" : false
+				},
+				{
+					"name" : "EX_OUT2",
+					"strict" : false
+				},
+				{
+					"name" : "EX_OUT3",
+					"strict" : false
+				},
+				{
+					"name" : "EX_OUT4",
+					"strict" : false
+				},
+				{
+					"name" : "EX_OUT5",
+					"strict" : false
+				},
+				{
+					"name" : "EX_OUT6",
+					"strict" : false
+				},
+				{
+					"name" : "EX_OUT7",
+					"strict" : false
+				},
+				{
+					"name" : "EX_OUT8",
 					"strict" : false
 				},
 				{

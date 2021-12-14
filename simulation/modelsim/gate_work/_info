@@ -1,0 +1,76 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/simulation/modelsim
+vhard_block
+Z1 !s110 1639142464
+!i10b 1
+!s100 fc]okWRd[@Y7nVh@7P@1o3
+IN3jHS1S^7c[^dl8;9`kI;0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1639128221
+Z4 81-frame.vo
+Z5 F1-frame.vo
+L0 18219
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1639142463.000000
+Z8 !s107 1-frame.vo|
+Z9 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|1-frame.vo|
+!i113 1
+Z10 o-vlog01compat -work work
+Z11 !s92 -vlog01compat -work work +incdir+.
+Z12 tCvgOpt 0
+vmain
+R1
+!i10b 1
+!s100 <=h4zdIm>]EokJC`FlPn=1
+If6ZJmbFdXgUB`a@^h]XLo2
+R2
+R0
+R3
+R4
+R5
+L0 31
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+R12
+vmain_vlg_tst
+R1
+!i10b 1
+!s100 c4aNnVdV=A76c^Uzo;BKR3
+Ij<_GWak7?c9KjKiL8cHa>2
+R2
+R0
+w1637153836
+8C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/simulation/modelsim/main.vt
+FC:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/simulation/modelsim/main.vt
+L0 28
+R6
+r1
+!s85 0
+31
+!s108 1639142464.000000
+!s107 C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/simulation/modelsim/main.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/simulation/modelsim|C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/simulation/modelsim/main.vt|
+!i113 1
+R10
+!s92 -vlog01compat -work work {+incdir+C:/intelFPGA_lite/18.1/Projects/Project 1-frame reg system/simulation/modelsim}
+R12
